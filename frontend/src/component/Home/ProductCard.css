@@ -1,0 +1,97 @@
+.productCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #1e1e1e;
+  margin: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.productCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.imgBox {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  height: 150px;
+  transition: transform 0.3s;
+}
+
+.productCard:hover .imgBox {
+  transform: scale(1.1);
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  z-index: 2;
+}
+
+.contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: background 0.3s;
+}
+
+.productCard:hover .contentBox {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.contentBox h3 {
+  font-size: 1.2rem;
+  color: #1e1e1e;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+.productCard:hover .contentBox h3 {
+  color: #48d738;
+}
+
+.productCardSpan {
+  margin: 5px 0;
+  font: 300 0.7rem "Roboto";
+}
+
+.price {
+  font-size: 1.2rem;
+  color: #1e1e1e;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.buy {
+  margin-top: 15px;
+  padding: 10px 20px;
+  color: #1e1e1e;
+  text-decoration: none;
+  background: #8cfbcd;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.buy:hover {
+  background: rgba(255, 255, 255, 0);
+  color: #1e1e1e;
+}

@@ -1,0 +1,23 @@
+/* Header.css (add or adjust styles as needed) */
+
+.speedDialIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .speedDialAction {
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .speedDialAction:hover {
+    background-color: #e0e0e0; /* Add a subtle background color on hover */
+    transform: scale(1.1); /* Scale the icon slightly on hover */
+  }
+  
+  .tooltipTitle {
+    font-weight: bold;
+    font-size: 14px;
+    /* Add other typography styles as needed */
+  }
+  

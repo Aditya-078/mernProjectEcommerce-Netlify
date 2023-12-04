@@ -1,0 +1,103 @@
+body {
+  background-color: #d2e3c8; /* Soft green background */
+  color: #1e1e1e;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ffffff, #f0f0f0);
+  transform: rotateX(45deg) translateY(-50%);
+  transform-origin: top;
+  z-index: -1;
+}
+
+.banner {
+  background-image: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=996&t=st=1701619525~exp=1701620125~hmac=259cd76dc146915f1036dedbd811132004452f51960d86bbda3c9de83fec8aa4");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vmin;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #313131; /* Dark text color */
+  position: relative;
+  overflow: hidden;
+}
+
+.banner > h1,
+.banner > p {
+  margin: 5vmax;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banner > a > button {
+  margin: 1rem;
+  cursor: pointer;
+  background-color: #d7e5ca; /* Soft green button */
+  border: 1px solid #d7e5ca;
+  border-radius: 4px;
+  padding: 1rem;
+  transition: all 0.5s;
+  font: 500 1rem 'Roboto';
+  color: #1e1e1e;
+  box-shadow: 0 5px 10px rgba(142, 172, 205, 0.3);
+}
+
+.banner > a > button:hover {
+  background-color: rgba(215, 229, 202, 0.8);
+  color: #1e1e1e;
+}
+
+.banner::after {
+  content: "";
+  width: 100vw;
+  height: 100vmin;
+  background-color: #d2e3c8; /* Soft green overlay */
+  position: absolute;
+  top: 0%;
+  left: 0;
+  clip-path: polygon(100% 100%, 0 100%, 100% 100%);
+  max-width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.homeHeading {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(224, 229, 235, 0.5);
+  width: 20rem;
+  padding: 1rem;
+  margin: 2rem auto;
+  color: #313131;
+  border-radius: 8px;
+  backdrop-filter: blur(40px);
+  box-shadow: 0 8px 16px rgba(62, 56, 56, 0.2);
+  background: rgba(250, 235, 214, 0.8);
+}
+
+.container {
+  display: flex;
+  margin: 2rem auto;
+  width: 80%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
