@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts --openssl-legacy-provider start",
-    "dev": "nodemon backend/server.js",
+    "dev": "node backend/server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run --openssl-legacy-provider build --prefix frontend "
   },
   "author": "",
