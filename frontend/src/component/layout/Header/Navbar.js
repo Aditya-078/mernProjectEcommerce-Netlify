@@ -42,7 +42,7 @@ const Navbar = () => {
           <Link to="/search" className="icon 3d-effect">
             <FaSearch />
           </Link>
-          <Link to="/profile" className="icon 3d-effect">
+          <Link to="/login" className="icon 3d-effect">
             <FaUser />
           </Link>
           <Link to="/cart" className="icon 3d-effect">
