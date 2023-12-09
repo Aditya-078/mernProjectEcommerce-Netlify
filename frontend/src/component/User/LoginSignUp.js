@@ -26,11 +26,12 @@ const LoginSignUp = ({ history, location }) => {
 
   const [user, setUser] = useState({
     name: "",
+    lastname:"",
     email: "",
     password: "",
   });
 
-  const { name, email, password } = user;
+  const { name, email, password, lastname } = user;
 
   const [avatar, setAvatar] = useState("/Profile.png");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
@@ -46,6 +47,7 @@ const LoginSignUp = ({ history, location }) => {
     const myForm = new FormData();
 
     myForm.set("name", name);
+    myForm.set("lastname", lastname);
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
@@ -152,6 +154,17 @@ const LoginSignUp = ({ history, location }) => {
                     required
                     name="name"
                     value={name}
+                    onChange={registerDataChange}
+                  />
+                </div>
+                <div className="signUpName">
+                  <FaceIcon />
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    required
+                    name="lastname"
+                    value={lastname}
                     onChange={registerDataChange}
                   />
                 </div>

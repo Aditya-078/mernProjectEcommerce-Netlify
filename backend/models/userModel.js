@@ -11,6 +11,13 @@ const userSchema = new mongoose.Schema({
     maxLength: [30, "Name cannot exceed 30 characters"],
     minLength: [4, "Name should have more than 4 characters"],
   },
+  lastname: {
+    type: String,
+    required: [true, "Please Enter Your Last Name"],
+    maxLength: [30, "Name cannot exceed 30 characters"],
+    minLength: [4, "Name should have more than 4 characters"],
+  },
+
   email: {
     type: String,
     required: [true, "Please Enter Your Email"],
@@ -30,7 +37,7 @@ const userSchema = new mongoose.Schema({
     },
     url: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   role: {

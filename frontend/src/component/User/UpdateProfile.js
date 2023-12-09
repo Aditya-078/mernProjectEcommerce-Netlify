@@ -17,6 +17,7 @@ const UpdateProfile = ({ history }) => {
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
 
   const [name, setName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState();
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
@@ -27,6 +28,7 @@ const UpdateProfile = ({ history }) => {
     const myForm = new FormData();
 
     myForm.set("name", name);
+    myForm.set("lastname", lastname);
     myForm.set("email", email);
     myForm.set("avatar", avatar);
     dispatch(updateProfile(myForm));
@@ -48,6 +50,7 @@ const UpdateProfile = ({ history }) => {
   useEffect(() => {
     if (user) {
       setName(user.name);
+      setLastName(user.lastname);
       setEmail(user.email);
       setAvatarPreview(user.avatar.url);
     }
@@ -95,6 +98,17 @@ const UpdateProfile = ({ history }) => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
+                <div className="updateProfileName">
+                  <FaceIcon />
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    required
+                    name="lastname"
+                    value={lastname}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
                 <div className="updateProfileEmail">
                   <MailOutlineIcon />
                   <input
@@ -111,6 +125,7 @@ const UpdateProfile = ({ history }) => {
                   <img src={avatarPreview} alt="Avatar Preview" />
                   <input
                     type="file"
+                    required
                     name="avatar"
                     accept="image/*"
                     onChange={updateProfileDataChange}

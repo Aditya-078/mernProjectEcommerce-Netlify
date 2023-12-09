@@ -28,8 +28,12 @@ const Profile = ({ history }) => {
             </div>
             <div>
               <div>
-                <h4>Full Name</h4>
+                <h4>First Name</h4>
                 <p>{user.name}</p>
+              </div>
+              <div>
+                <h4>Last Name</h4>
+                <p>{user.lastname}</p>
               </div>
               <div>
                 <h4>Email</h4>

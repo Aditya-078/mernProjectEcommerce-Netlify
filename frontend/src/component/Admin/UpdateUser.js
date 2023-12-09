@@ -28,6 +28,7 @@ const UpdateUser = ({ history, match }) => {
   } = useSelector((state) => state.profile);
 
   const [name, setName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
 
@@ -37,7 +38,9 @@ const UpdateUser = ({ history, match }) => {
     if (user && user._id !== userId) {
       dispatch(getUserDetails(userId));
     } else {
+
       setName(user.name);
+      setName(user.lastname);
       setEmail(user.email);
       setRole(user.role);
     }
@@ -64,6 +67,7 @@ const UpdateUser = ({ history, match }) => {
     const myForm = new FormData();
 
     myForm.set("name", name);
+    myForm.set("lastname", lastname);
     myForm.set("email", email);
     myForm.set("role", role);
 
@@ -93,6 +97,16 @@ const UpdateUser = ({ history, match }) => {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div>
+                <PersonIcon />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  required
+                  value={lastname}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
               <div>
