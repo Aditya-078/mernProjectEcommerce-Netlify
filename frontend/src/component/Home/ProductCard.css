@@ -81,17 +81,44 @@
 
 .buy {
   margin-top: 15px;
+  font-weight: 700;
   padding: 10px 20px;
-  color: #1e1e1e;
+  color: #0a1e01;
   text-decoration: none;
-  background: #8cfbcd;
+  background: #95fb8c;
   border-radius: 30px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: background 0.3s, color 0.3s;
+  transition: all 0.3s ease;
+  border: #48d738 solid 1px;
+  box-shadow: 0 5px 15px rgba(0, 128, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.buy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  z-index: -1;
+  transform: scale(0.9);
+  opacity: 0;
 }
 
 .buy:hover {
-  background: rgba(255, 255, 255, 0);
-  color: #1e1e1e;
+  color: #48d738;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 128, 0, 0.5);
+}
+
+.buy:hover::before {
+  opacity: 1;
+  transform: scale(1.1);
 }

@@ -109,7 +109,7 @@ const LoginSignUp = ({ history, location }) => {
         <Fragment>
           <div className="LoginSignUpContainer">
             <div className="LoginSignUpBox">
-              <div>
+              <div className="box">
                 <div className="login_signUp_toggle">
                   <p onClick={(e) => switchTabs(e, "login")}>LOGIN</p>
                   <p onClick={(e) => switchTabs(e, "register")}>REGISTER</p>
@@ -118,7 +118,7 @@ const LoginSignUp = ({ history, location }) => {
               </div>
               <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
                 <div className="loginEmail">
-                  <MailOutlineIcon />
+                  <MailOutlineIcon style={{ marginLeft: '10px' }} />
                   <input
                     type="email"
                     placeholder="Email"
@@ -128,7 +128,7 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
                 <div className="loginPassword">
-                  <LockOpenIcon />
+                  <LockOpenIcon style={{ marginLeft: '10px' }} />
                   <input
                     type="password"
                     placeholder="Password"
@@ -147,7 +147,7 @@ const LoginSignUp = ({ history, location }) => {
                 onSubmit={registerSubmit}
               >
                 <div className="signUpName">
-                  <FaceIcon />
+                  <FaceIcon  style={{ marginLeft: '10px' }} />
                   <input
                     type="text"
                     placeholder="Name"
@@ -158,7 +158,7 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
                 <div className="signUpName">
-                  <FaceIcon />
+                  <FaceIcon style={{ marginLeft: '10px' }} />
                   <input
                     type="text"
                     placeholder="Last Name"
@@ -169,7 +169,7 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
                 <div className="signUpEmail">
-                  <MailOutlineIcon />
+                  <MailOutlineIcon style={{ marginLeft: '10px' }} />
                   <input
                     type="email"
                     placeholder="Email"
@@ -180,7 +180,7 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
                 <div className="signUpPassword">
-                  <LockOpenIcon />
+                  <LockOpenIcon style={{ marginLeft: '10px' }} />
                   <input
                     type="password"
                     placeholder="Password"
@@ -192,6 +192,7 @@ const LoginSignUp = ({ history, location }) => {
                 </div>
 
                 <div id="registerImage">
+
                   <img src={avatarPreview} alt="Avatar Preview" />
                   <input
                     type="file"
@@ -199,7 +200,9 @@ const LoginSignUp = ({ history, location }) => {
                     accept="image/*"
                     onChange={registerDataChange}
                   />
+                  
                 </div>
+                <span className="instruct">Profile image size should be less than 1mb</span>
                 <input type="submit" value="Register" className="signUpBtn" />
               </form>
             </div>

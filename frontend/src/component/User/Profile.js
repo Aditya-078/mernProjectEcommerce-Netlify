@@ -21,12 +21,12 @@ const Profile = ({ history }) => {
         <Fragment>
           <MetaData title={`${user.name}'s Profile`} />
           <div className="profileContainer">
-            <div>
+            <div className="textcontainer">
               <h1>My Profile</h1>
               <img src={user.avatar.url} alt={user.name} />
               <Link to="/me/update">Edit Profile</Link>
             </div>
-            <div>
+            <div className="textcontainer">
               <div>
                 <h4>First Name</h4>
                 <p>{user.name}</p>

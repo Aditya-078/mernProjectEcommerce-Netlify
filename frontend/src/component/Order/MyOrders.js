@@ -19,7 +19,9 @@ const MyOrders = () => {
   const { user } = useSelector((state) => state.user);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1, 
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    borderRadius: 100, },
 
     {
       field: "status",
@@ -88,6 +90,7 @@ const MyOrders = () => {
   return (
     <Fragment>
       <MetaData title={`${user.name} - Orders`} />
+      <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
 
       {loading ? (
         <Loader />
@@ -102,7 +105,6 @@ const MyOrders = () => {
             autoHeight
           />
 
-          <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
         </div>
       )}
     </Fragment>

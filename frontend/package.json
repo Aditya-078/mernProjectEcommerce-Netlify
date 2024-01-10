@@ -10,6 +10,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@material/menu": "^14.0.0",
+    "@mongodb-js/charts-embed-dom": "^3.2.1",
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.19",
     "@stripe/react-stripe-js": "^1.4.1",
@@ -25,6 +26,7 @@
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
     "react-chartjs-2": "^3.0.4",
+    "react-datepicker": "^4.24.0",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
@@ -64,5 +66,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://infispec-ecommerce-backend2.onrender.com/"
+  "proxy": "http://localhost:4000/"
 }

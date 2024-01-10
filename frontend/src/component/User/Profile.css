@@ -7,6 +7,8 @@
   left: 0%;
   max-width: 100%;
   background-color: white;
+  margin-top: 20px;
+  overflow: scroll;
 }
 
 .profileContainer > div {
@@ -27,8 +29,9 @@
 
 .profileContainer > div:first-child > img {
   width: 20vmax;
-  border-radius: 100%;
+  border-radius: 30%;
   transition: all 0.5s;
+  border: 1px solid black;
 }
 
 .profileContainer > div:first-child > img:hover {
@@ -37,20 +40,25 @@
 
 .profileContainer > div:first-child > a {
   border: none;
-  background-color: tomato;
-  font: 400 1vmax "Roboto";
+  background-color: #4CAF50; 
   color: white;
   text-decoration: none;
   padding: 0.5vmax;
   width: 30%;
   margin: 4vmax;
   text-align: center;
-  transition: all 0.5s;
+  border-radius: 5px; 
+  box-shadow: 0 5px 15px rgba(0, 128, 0, 0.4); 
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transform: translateZ(0);
 }
 
 .profileContainer > div:first-child > a:hover {
-  background-color: rgb(204, 78, 56);
+  background-color: #367A38; 
+  box-shadow: 0 8px 25px rgba(0, 128, 0, 0.6); 
+  transform: translateY(-3px); 
 }
+
 
 .profileContainer > div:last-child {
   justify-content: space-evenly;
@@ -60,15 +68,33 @@
 }
 
 .profileContainer > div:last-child > div > h4 {
+  background: rgba(211, 252, 165, 0.635);
+  border-radius: 10px;
+  border: 1px solid rgba(234, 234, 234, 0.777);
   color: black;
   font: 400 1.2vmax "Roboto";
+  padding: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.textcontainer{
+  margin-top: 30px;
 }
 
 .profileContainer > div:last-child > div > p {
-  color: rgba(0, 0, 0, 0.418);
-  font: 400 1vmax cursive;
-  margin: 0.2vmax;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: rgb(0, 0, 0);
+  font: 400 16px cursive;
+  padding: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 .profileContainer > div:last-child > div:last-child {
   display: flex;
@@ -78,7 +104,7 @@
 
 .profileContainer > div:last-child > div:last-child > a {
   border: none;
-  background-color: rgb(68, 68, 68);
+  background-color: rgb(42, 137, 21);
   font: 400 1vmax "Roboto";
   color: white;
   text-decoration: none;

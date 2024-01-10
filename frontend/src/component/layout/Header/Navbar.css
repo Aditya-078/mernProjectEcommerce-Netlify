@@ -1,61 +1,153 @@
-/* Navbar.css */
-
 .navbar {
+  text-transform: uppercase;
+  padding: 5px 5px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(174, 224, 108, 0.85);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto ;
+  padding: 10px 20px;
+}
+
+.navbar-logo img:hover {
+  transform: scale(1.1);
+}
+
+.navbar-links,
+.navbar-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links a,
+.icon {
+  text-decoration: none;
+  color: #2e2e2e;
+  font-weight: 600;
+  padding: 1px 15px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  transition: color 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+}
+
+.navbar-links a:hover,
+.icon:hover {
+  color: #fff;
+  background-color: #41ed9d;
+  padding: 10px 20px;
+}
+
+.icon {
+  font-size: 1.2em;
+}
+
+.icon:hover {
+  transform: rotate(15deg);
+}
+
+.navbar-toggle {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  font-size: 2em;
+  color: #2e2e2e;
+  right: 10px;
+  top: 10px;
+}
+
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+    cursor: pointer;
+    z-index: 1500; /* Ensure this is above other content */
+  }
+  
+  .navbar-links{
+    z-index: 9999;
+    margin-top: 40px;
     position: fixed;
+    right: -100%;
     top: 0;
-    width: 100%;
-    background-color: #86A789;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    transition: background-color 0.3s, transform 0.5s; /* Added transition for transform */
-  }
-  
-  .navbar.hidden {
-    transform: translateY(-100%); /* Slide the navbar out of view when hidden */
-  }
-  
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
+    height: 100vh;
+    width: 50%;
+    background-color: rgba(174, 224, 108, 0.95);
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 20px;
+    transition: right 0.3s;
+    display: flex; /* This should be flex, not none, to be toggleable */
   }
-  
-  .navbar-logo img {
-    height: 40px;
-  }
-  
-  .navbar-links {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-links a:hover {
-    color: #41ed9d;
-  }
-  
   .navbar-icons {
+    z-index: 9999;
+    margin-top: 300px;
+    position: absolute;
+    right: -100%;
+    top: 0;
+    height: 100vh;
+    width: 50%;
+    background-color: rgba(174, 224, 108, 0.95);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: right 0.3s;
+    display: flex; /* This should be flex, not none, to be toggleable */
+  }
+
+  .navbar-links a,
+  .navbar-icons .icon {
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    display: block; 
+    z-index: 1502;/* This should be block to make links stack vertically */
+  }
+
+  .navbar-links.active,
+  .navbar-icons.active {
+    right: 0; /* This will slide the menu in from the right */
+    display: flex; /* Ensure this is set to flex to display the menu */
+  }
+
+  .burger-icon {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1500; /* Ensure this is above other content */
   }
-  
-  .icon {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.2em;
-    transition: color 0.3s ease;
+
+  .burger-line {
+    width: 25px;
+    height: 3px;
+    background-color: #2e2e2e;
+    transition: transform 0.3s ease;
   }
-  
-  .icon:hover {
-    color: #eb4034;
+
+  .burger-icon.active .burger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
   }
-  
+
+  .burger-icon.active .burger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-icon.active .burger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+

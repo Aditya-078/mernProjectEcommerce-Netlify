@@ -1,10 +1,39 @@
-body {
-  background-color: #d2e3c8; /* Soft green background */
-  color: #1e1e1e;
-  font-family: 'Roboto', sans-serif;
+/* Base styles */
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  
 }
 
+body, html {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #b6b6b692;
+  
+}
+
+/* Banner styles */
+.banner {
+  margin-top: 105px;
+  position: relative;
+  background-image: url("https://files.oaiusercontent.com/file-YxrdldAVtHdyjVW4vicmgJZt?se=2023-12-21T06%3A33%3A33Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Da407867f-e75a-45f9-a52d-d82a0c1b4c14.webp&sig=Vx00F9%2BzbOXrv1TSY4vH5iond60vWVfGI1XwuMtMFsQ%3D");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.3); /* Adds a 3D effect perspective */
+}
+
+/* Glass effect with 3D rotation */
 .banner::before {
   content: "";
   position: absolute;
@@ -12,92 +41,80 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #ffffff, #f0f0f0);
-  transform: rotateX(45deg) translateY(-50%);
-  transform-origin: top;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08));
+  transform: rotateY(10deg) rotateX(10deg) scale(1.1); /* 3D rotate */
+  transform-origin: center;
   z-index: -1;
+  backdrop-filter: blur(1px); /* Frosted glass effect */
+  border-radius: 4px; /* Soft rounded corners for the glass effect */
 }
 
-.banner {
-  background-image: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=996&t=st=1701619525~exp=1701620125~hmac=259cd76dc146915f1036dedbd811132004452f51960d86bbda3c9de83fec8aa4");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vmin;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  color: #313131; /* Dark text color */
-  position: relative;
-  overflow: hidden;
-}
-
-.banner > h1,
-.banner > p {
-  margin: 5vmax;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(0, 0, 0, 0.3);
-  padding: 10px;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.banner > a > button {
+/* Text styling */
+.banner h1,
+.banner p {
+  letter-spacing: 3px;
+  z-index: 2;
+  font-size: 2rem;
+  color: #333333;
+  background: rgba(99, 249, 126, 0.382);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  backdrop-filter: blur(15px); /* Frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.214);
   margin: 1rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+/* Button styling */
+.banner a button {
+  z-index: 2;
   cursor: pointer;
-  background-color: #d7e5ca; /* Soft green button */
-  border: 1px solid #d7e5ca;
-  border-radius: 4px;
-  padding: 1rem;
-  transition: all 0.5s;
-  font: 500 1rem 'Roboto';
+  background-color: #aee06c; 
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border-radius: 20px; 
+  padding: 1rem 2rem;
+  font-size: 1rem;
   color: #1e1e1e;
-  box-shadow: 0 5px 10px rgba(142, 172, 205, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.banner > a > button:hover {
-  background-color: rgba(215, 229, 202, 0.8);
-  color: #1e1e1e;
+.banner a button:hover {
+  transform: translateY(-5px) scale(1.05); /* 3D hover effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
-.banner::after {
-  content: "";
-  width: 100vw;
-  height: 100vmin;
-  background-color: #d2e3c8; /* Soft green overlay */
-  position: absolute;
-  top: 0%;
-  left: 0;
-  clip-path: polygon(100% 100%, 0 100%, 100% 100%);
-  max-width: 100%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  z-index: 1;
-}
-
-.homeHeading {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  font-size: 1.5rem;
-  border-bottom: 1px solid rgba(224, 229, 235, 0.5);
-  width: 20rem;
-  padding: 1rem;
-  margin: 2rem auto;
-  color: #313131;
-  border-radius: 8px;
-  backdrop-filter: blur(40px);
-  box-shadow: 0 8px 16px rgba(62, 56, 56, 0.2);
-  background: rgba(250, 235, 214, 0.8);
-}
-
+/* Additional container styles if needed */
 .container {
   display: flex;
   margin: 2rem auto;
   width: 80%;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+/* Heading in the content area */
+.homeHeading {
+  text-decoration: none; /* Removing underline for a cleaner look */
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #313131;
+  background: rgba(59, 214, 67, 0.633);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: none; 
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); 
+  transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.homeHeading:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); 
 }

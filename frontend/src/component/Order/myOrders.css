@@ -1,80 +1,87 @@
 .myOrdersPage {
-  width: 100vw;
-  max-width: 100%;
-  padding: 0 7vmax;
-  box-sizing: border-box;
-  background-color: rgb(235, 235, 235);
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: #f5f5f7;
+  border: none;
+   
 }
+
 
 #myOrdersHeading {
+  font-size: 2rem;
+  color: #050202;
+  margin-top: 124px;
+  width: 100%;
+  
+  font-weight: 600;
   text-align: center;
-  font: 400 1.2vmax "Roboto";
-  padding: 0.5vmax;
-  box-sizing: border-box;
-  color: rgb(255, 255, 255);
-  transition: all 0.5s;
-  background-color: rgb(44, 44, 44);
+  justify-content: center;
+  padding: 1rem 2rem;
+  background-color: rgb(252, 5, 5);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(78, 180, 35, 0.931) ;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2),
+              -5px -5px 15px rgba(255, 255, 255, 0.2);
+  transform: translateZ(30px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.myOrdersTable {
-  background-color: white;
+#myOrdersHeading:hover {
+  transform: translateZ(60px);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2),
+              -10px -10px 30px rgba(255, 255, 255, 0.2);
 }
 
-.myOrdersTable div {
-  font: 300 1vmax "Roboto";
-  color: rgba(0, 0, 0, 0.678);
+.myOrdersTable  {
+  font-family: 'Istok Web', sans-serif;
+  background-color: rgb(255, 255, 255); /* White background for the table */
+  border-radius: 10px;
+  margin-top: 1rem;
+  width: 95%;
   border: none;
 }
 
-.myOrdersTable a {
-  color: rgba(0, 0, 0, 0.527);
-  transition: all 0.5s;
+
+.greenColor {
+  color: #388e3c; /* Darker green color for delivered status */
 }
 
-.myOrdersTable a:hover {
-  color: tomato;
+.redColor {
+  color: #d32f2f; /* Red color for statuses like processing, shipped, etc. */
 }
 
-.MuiDataGrid-columnHeader {
-  background-color: tomato;
-  padding: 1vmax !important;
+.myOrdersTable .MuiDataGrid-footerContainer {
+  background-color: #2ca036;
 }
 
-.MuiDataGrid-columnHeader div {
-  color: rgb(255, 255, 255);
-  font: 500 1.1vmax "Roboto" !important;
+.myOrdersTable .MuiDataGrid-row:hover {
+  background-color: #04cd0b; /* Slightly darker green for hover effect */
 }
 
-.MuiDataGrid-iconSeparator {
-  display: none !important;
+.MuiDataGrid-columnHeaderTitleContainer {
+  font-weight: bold;
+  background-color: #04cd0b;
 }
 
-@media screen and (max-width: 600px) {
-  .myOrdersPage {
-    padding: 0;
-    height: 93vh;
+.MuiSvgIcon-root {
+  fill: #3a3a3a; 
+}
+
+.MuiSvgIcon-root:hover {
+  fill: #388e3c; 
+}
+
+@media (max-width: 600px) {
+  .myOrdersTable {
+    width: 100%;
   }
 
   #myOrdersHeading {
-    font: 400 2.2vmax "Roboto";
-    padding: 4vw;
+    font-size: 1.5rem;
   }
-
-  .myOrdersTable div {
-    font: 300 4vw "Roboto";
-  }
-
-  .MuiDataGrid-columnHeader {
-    padding: 20px !important;
-  }
-
-  .MuiDataGrid-columnHeader div {
-    font: 500 5vw "Roboto" !important;
-  }
+}
+.MuiDataGrid-columnHeader--sortable {
+  background-color: #01a607;
 }

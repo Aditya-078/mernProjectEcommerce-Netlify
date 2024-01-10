@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import "./orderDetails.css";
+import "./OrderDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
 import { Link } from "react-router-dom";
@@ -29,7 +29,7 @@ const OrderDetails = ({ match }) => {
       ) : (
         <Fragment>
           <MetaData title="Order Details" />
-          <div className="orderDetailsPage">
+          <div className="orderDetailsPage"  >
             <div className="orderDetailsContainer">
               <Typography component="h1">
                 Order #{order && order._id}

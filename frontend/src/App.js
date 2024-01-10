@@ -69,7 +69,9 @@ function App() {
   window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
-    <Router>
+    <div className="wrapper">
+  <div className="content">
+    <Router >
       <Header />
 
       {isAuthenticated && <UserOptions user={user} />}
@@ -188,6 +190,9 @@ function App() {
 
       <Footer />
     </Router>
+    </div>
+    </div>
+
   );
 }
 
