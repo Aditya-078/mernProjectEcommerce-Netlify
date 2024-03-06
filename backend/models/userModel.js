@@ -4,6 +4,37 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 
+const addressSchema = new mongoose.Schema({
+  address: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  state: {
+    type: String,
+    required: true
+  },
+  country: {
+    type: String,
+    required: true
+  },
+  pinCode: {
+    type: String,
+    required: true
+  },
+  phoneNo: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -17,7 +48,6 @@ const userSchema = new mongoose.Schema({
     maxLength: [30, "Name cannot exceed 30 characters"],
     minLength: [4, "Name should have more than 4 characters"],
   },
-
   email: {
     type: String,
     required: [true, "Please Enter Your Email"],
@@ -44,11 +74,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "user",
   },
+  wishlist: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product", 
+    },
+  ],
+  addresses: [addressSchema], 
   createdAt: {
     type: Date,
     default: Date.now,
   },
-
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });
@@ -69,7 +105,6 @@ userSchema.methods.getJWTToken = function () {
 };
 
 // Compare Password
-
 userSchema.methods.comparePassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };

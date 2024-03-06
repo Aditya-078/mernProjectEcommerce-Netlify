@@ -32,9 +32,7 @@ const Payment = ({ history }) => {
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
 
-  const paymentData = {
-    amount: Math.round(orderInfo.totalPrice * 100),
-  };
+ 
 
   const order = {
     shippingInfo,
@@ -47,8 +45,11 @@ const Payment = ({ history }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
     payBtn.current.disabled = true;
+
+    const paymentDataWithCoupon = {
+      amount: Math.round(orderInfo.totalPrice * 100),
+    };
 
     try {
       const config = {
@@ -56,15 +57,19 @@ const Payment = ({ history }) => {
           "Content-Type": "application/json",
         },
       };
+
       const { data } = await axios.post(
         "/api/v1/payment/process",
-        paymentData,
+        paymentDataWithCoupon,
         config
       );
 
       const client_secret = data.client_secret;
 
-      if (!stripe || !elements) return;
+      if (!stripe || !elements) {
+        payBtn.current.disabled = false;
+        return;
+      }
 
       const result = await stripe.confirmCardPayment(client_secret, {
         payment_method: {
@@ -85,7 +90,6 @@ const Payment = ({ history }) => {
 
       if (result.error) {
         payBtn.current.disabled = false;
-
         alert.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
@@ -95,10 +99,9 @@ const Payment = ({ history }) => {
           };
 
           dispatch(createOrder(order));
-
           history.push("/success");
         } else {
-          alert.error("There's some issue while processing payment ");
+          alert.error("There's some issue while processing payment");
         }
       }
     } catch (error) {
@@ -133,6 +136,7 @@ const Payment = ({ history }) => {
             <VpnKeyIcon />
             <CardCvcElement className="paymentInput" />
           </div>
+
 
           <input
             type="submit"

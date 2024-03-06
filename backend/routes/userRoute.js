@@ -12,6 +12,13 @@ const {
   getSingleUser,
   updateUserRole,
   deleteUser,
+  addAddress,
+  updateAddress,
+  removeAddress,
+  selectAddress,
+  addToWishlist,
+  removeFromWishlist,
+  getWishlist,
 } = require("../controllers/userController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
@@ -42,5 +49,31 @@ router
   .get(isAuthenticatedUser, authorizeRoles("admin"), getSingleUser)
   .put(isAuthenticatedUser, authorizeRoles("admin"), updateUserRole)
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser);
+
+// Routes for address management
+router
+  .route("/address")
+  .post(isAuthenticatedUser, addAddress);
+
+router
+  .route("/address/:addressId")
+  .put(isAuthenticatedUser, updateAddress)
+  .delete(isAuthenticatedUser, removeAddress);
+
+router
+  .route("/address/select/:addressId")
+  .put(isAuthenticatedUser, selectAddress);
+
+  router
+  .route("/wishlist/add/:productId") // Route for adding to wishlist
+  .post(isAuthenticatedUser, addToWishlist);
+
+router
+  .route("/wishlist/remove/:productId") // Route for removing from wishlist
+  .delete(isAuthenticatedUser, removeFromWishlist);
+
+router
+  .route("/wishlist") // Route for getting wishlist items
+  .get(isAuthenticatedUser, getWishlist);
 
 module.exports = router;

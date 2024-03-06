@@ -53,12 +53,14 @@ export const productsReducer = (state = { products: [] }, action) => {
 
     case ADMIN_PRODUCT_SUCCESS:
       return {
+        ...state,
         loading: false,
         products: action.payload,
       };
     case ALL_PRODUCT_FAIL:
     case ADMIN_PRODUCT_FAIL:
       return {
+        ...state,
         loading: false,
         error: action.payload,
       };

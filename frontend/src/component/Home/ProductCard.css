@@ -1,7 +1,7 @@
 .productCard {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-decoration: none;
   color: #1e1e1e;
   margin: 20px;
@@ -80,6 +80,7 @@
 }
 
 .buy {
+  margin-left: 3px;
   margin-top: 15px;
   font-weight: 700;
   padding: 10px 20px;

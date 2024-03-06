@@ -5,6 +5,8 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
+const Product = require("../models/productModel");
+
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -153,6 +155,120 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+
+// Add Address
+exports.addAddress = catchAsyncErrors(async (req, res, next) => {
+  const userId = req.user.id;
+  const { address, city, state, country, pinCode, phoneNo } = req.body;
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    return next(new ErrorHander("User not found", 404));
+  }
+
+  user.addresses.push({ address, city, state, country, pinCode, phoneNo });
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Address added successfully",
+  });
+});
+
+// Update Address
+exports.updateAddress = catchAsyncErrors(async (req, res, next) => {
+  const userId = req.user.id;
+  const addressId = req.params.addressId;
+  const { address, city, state, country, pinCode, phoneNo } = req.body;
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    return next(new ErrorHander("User not found", 404));
+  }
+
+  const existingAddress = user.addresses.id(addressId);
+
+  if (!existingAddress) {
+    return next(new ErrorHander("Address not found", 404));
+  }
+
+  existingAddress.address = address;
+  existingAddress.city = city;
+  existingAddress.state = state;
+  existingAddress.country = country;
+  existingAddress.pinCode = pinCode;
+  existingAddress.phoneNo = phoneNo;
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Address updated successfully",
+  });
+});
+
+// Remove Address
+exports.removeAddress = catchAsyncErrors(async (req, res, next) => {
+  const userId = req.user.id;
+  const addressId = req.params.addressId;
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    return next(new ErrorHander("User not found", 404));
+  }
+
+  const existingAddress = user.addresses.id(addressId);
+
+  if (!existingAddress) {
+    return next(new ErrorHander("Address not found", 404));
+  }
+
+  existingAddress.remove();
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Address removed successfully",
+  });
+});
+
+// Select Address
+exports.selectAddress = catchAsyncErrors(async (req, res, next) => {
+  const userId = req.user.id;
+  const addressId = req.params.addressId;
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    return next(new ErrorHander("User not found", 404));
+  }
+
+  const existingAddress = user.addresses.id(addressId);
+
+  if (!existingAddress) {
+    return next(new ErrorHander("Address not found", 404));
+  }
+
+  user.selectedAddressId = addressId;
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Address selected successfully",
+  });
+});
+
+
+
+
+
+
 // update User password
 exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
@@ -276,5 +392,65 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: "User Deleted Successfully",
+  });
+});
+
+
+exports.addToWishlist = catchAsyncErrors(async (req, res, next) => {
+  const { productId } = req.params;
+
+
+  // Check if the product exists
+  const product = await Product.findById(productId);
+  if (!product) {
+    return next(new ErrorHander(`Product not found with ID: ${productId}`, 404));
+  }
+
+  // Check if the user already has the product in the wishlist
+  const user = await User.findById(req.user.id);
+  if (user.wishlist.includes(productId)) {
+    return next(new ErrorHander("Product already in the wishlist", 400));
+  }
+
+  // Add the product to the user's wishlist
+  user.wishlist.push(productId);
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Product added to wishlist successfully",
+  });
+});
+
+// Remove product from user's wishlist
+exports.removeFromWishlist = catchAsyncErrors(async (req, res, next) => {
+  const { productId } = req.params;
+
+  // Check if the user has the product in the wishlist
+  const user = await User.findById(req.user.id);
+  if (!user.wishlist.includes(productId)) {
+    return next(new ErrorHander("Product not found in the wishlist", 404));
+  }
+
+  // Remove the product from the user's wishlist
+  user.wishlist = user.wishlist.filter((id) => id.toString() !== productId);
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Product removed from wishlist successfully",
+  });
+});
+
+// Get user's wishlist
+exports.getWishlist = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user.id).populate({
+    path: 'wishlist',
+    select: 'name images' // Adjust the fields you want to retrieve from the products
+  });
+
+  res.status(200).json({
+    success: true,
+    wishlist: user.wishlist,
   });
 });

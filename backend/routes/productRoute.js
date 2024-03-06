@@ -9,6 +9,7 @@ const {
   getProductReviews,
   deleteReview,
   getAdminProducts,
+  getProductsByCategory,
 } = require("../controllers/productController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
@@ -37,5 +38,7 @@ router
   .route("/reviews")
   .get(getProductReviews)
   .delete(isAuthenticatedUser, deleteReview);
+
+  router.route("/product/category/:category").get( getProductsByCategory);
 
 module.exports = router;

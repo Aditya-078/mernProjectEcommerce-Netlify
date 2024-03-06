@@ -25,14 +25,5 @@ input[type="number"] {
 .redColor {
   color: red !important;
 }
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  
-}
 
-.content {
-  flex: 1;
-  
-  
-}
+

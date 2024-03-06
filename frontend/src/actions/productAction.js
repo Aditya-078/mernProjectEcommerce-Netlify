@@ -262,6 +262,47 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
   }
 };
 
+// Fetch Categories
+export const getCategories = () => async (dispatch) => {
+  try {
+    dispatch({ type: SUBCATEGORIES_REQUEST });
+
+    const { data } = await axios.get(`/api/v1/categories`);
+
+    dispatch({
+      type: SUBCATEGORIES_SUCCESS,
+      payload: data.categories,
+    });
+  } catch (error) {
+    dispatch({
+      type: SUBCATEGORIES_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Get Products By Category
+export const getProductsByCategory = (category) => async (dispatch) => {
+  try {
+    dispatch({ type: ALL_PRODUCT_REQUEST });
+
+    const { data } = await axios.get(`/api/v1/product/category/${category}`);
+
+    dispatch({
+      type: ALL_PRODUCT_SUCCESS,
+      payload: data.products,
+    });
+  } catch (error) {
+    dispatch({
+      type: ALL_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+
+
+
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });

@@ -30,6 +30,7 @@ const UpdateProduct = ({ history, match }) => {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [costprice, setCostPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [Stock, setStock] = useState(0);
@@ -56,6 +57,7 @@ const UpdateProduct = ({ history, match }) => {
       setName(product.name);
       setDescription(product.description);
       setPrice(product.price);
+      setCostPrice(product.costprice);
       setCategory(product.category);
       setStock(product.Stock);
       setOldImages(product.images);
@@ -93,6 +95,7 @@ const UpdateProduct = ({ history, match }) => {
 
     myForm.set("name", name);
     myForm.set("price", price);
+    myForm.set("costprice", costprice);
     myForm.set("description", description);
     myForm.set("category", category);
     myForm.set("Stock", Stock);
@@ -155,6 +158,16 @@ const UpdateProduct = ({ history, match }) => {
                 required
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
+              />
+            </div>
+
+            <div>
+              <AttachMoneyIcon />
+              <input
+                type="number"
+                placeholder="Cost Price"
+                required
+                onChange={(e) => setCostPrice(e.target.value)}
               />
             </div>
 

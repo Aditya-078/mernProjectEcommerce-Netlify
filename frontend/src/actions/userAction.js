@@ -35,7 +35,25 @@ import {
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
   CLEAR_ERRORS,
+  ADD_ADDRESS_REQUEST,
+  ADD_ADDRESS_SUCCESS,
+  ADD_ADDRESS_FAIL,
+  UPDATE_ADDRESS_REQUEST,
+  UPDATE_ADDRESS_SUCCESS,
+  UPDATE_ADDRESS_FAIL,
+  REMOVE_ADDRESS_REQUEST,
+  REMOVE_ADDRESS_SUCCESS,
+  REMOVE_ADDRESS_FAIL,
+  SELECT_ADDRESS_REQUEST,
+  SELECT_ADDRESS_SUCCESS,
+  SELECT_ADDRESS_FAIL,
+  EDIT_ADDRESS_REQUEST,
+  EDIT_ADDRESS_SUCCESS,
+  EDIT_ADDRESS_FAIL,
+  
+  
 } from "../constants/userConstants";
+
 import axios from "axios";
 
 // Login
@@ -241,7 +259,97 @@ export const deleteUser = (id) => async (dispatch) => {
   }
 };
 
+// Add Address
+export const addAddress = (addressData) => async (dispatch) => {
+  try {
+    dispatch({ type: ADD_ADDRESS_REQUEST });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.post(`/api/v1/address`, addressData, config);
+
+    dispatch({ type: ADD_ADDRESS_SUCCESS, payload: data.message });
+  } catch (error) {
+    dispatch({ type: ADD_ADDRESS_FAIL, payload: error.response.data.message });
+  }
+};
+
+// Update Address
+export const updateAddress = (addressId, addressData) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_ADDRESS_REQUEST });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.put(
+      `/api/v1/address/${addressId}`,
+      addressData,
+      config
+    );
+
+    dispatch({ type: UPDATE_ADDRESS_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_ADDRESS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Remove Address
+export const removeAddress = (addressId) => async (dispatch) => {
+  try {
+    dispatch({ type: REMOVE_ADDRESS_REQUEST });
+
+    const { data } = await axios.delete(`/api/v1/address/${addressId}`);
+
+    dispatch({ type: REMOVE_ADDRESS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: REMOVE_ADDRESS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Select Address
+export const selectAddress = (addressId) => async (dispatch) => {
+  try {
+    dispatch({ type: SELECT_ADDRESS_REQUEST });
+
+    const { data } = await axios.put(`/api/v1/address/select/${addressId}`);
+
+    dispatch({ type: SELECT_ADDRESS_SUCCESS, payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: SELECT_ADDRESS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Edit Address
+export const editAddress = (addressId, addressData) => async (dispatch) => {
+  try {
+    dispatch({ type: EDIT_ADDRESS_REQUEST });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.put(
+      `/api/v1/address/${addressId}`,
+      addressData,
+      config
+    );
+
+    dispatch({ type: EDIT_ADDRESS_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({ type: EDIT_ADDRESS_FAIL, payload: error.response.data.message });
+  }
+};
+
+
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };
+

@@ -38,8 +38,22 @@ import {
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
+  ADD_ADDRESS_REQUEST,
+  ADD_ADDRESS_SUCCESS,
+  ADD_ADDRESS_FAIL,
+  UPDATE_ADDRESS_REQUEST,
+  UPDATE_ADDRESS_SUCCESS,
+  UPDATE_ADDRESS_FAIL,
+  REMOVE_ADDRESS_REQUEST,
+  REMOVE_ADDRESS_SUCCESS,
+  REMOVE_ADDRESS_FAIL,
+  SELECT_ADDRESS_REQUEST,
+  SELECT_ADDRESS_SUCCESS,
+  SELECT_ADDRESS_FAIL,
   CLEAR_ERRORS,
 } from "../constants/userConstants";
+
+
 
 export const userReducer = (state = { user: {} }, action) => {
   switch (action.type) {
@@ -97,6 +111,57 @@ export const userReducer = (state = { user: {} }, action) => {
         error: null,
       };
 
+      case ADD_ADDRESS_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          user: { ...state.user, addresses: [...state.user.addresses, action.payload] }
+        };
+      case REMOVE_ADDRESS_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          user: { ...state.user, addresses: state.user.addresses.filter(address => address._id !== action.payload) }
+        };
+     
+      default:
+        return state;
+    }
+  };
+
+export const addressReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADD_ADDRESS_REQUEST:
+    case UPDATE_ADDRESS_REQUEST:
+    case REMOVE_ADDRESS_REQUEST:
+    case SELECT_ADDRESS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ADD_ADDRESS_SUCCESS:
+    case UPDATE_ADDRESS_SUCCESS:
+    case REMOVE_ADDRESS_SUCCESS:
+    case SELECT_ADDRESS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: action.payload,
+      };
+    case ADD_ADDRESS_FAIL:
+    case UPDATE_ADDRESS_FAIL:
+    case REMOVE_ADDRESS_FAIL:
+    case SELECT_ADDRESS_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }
@@ -269,3 +334,6 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
       return state;
   }
 };
+
+
+

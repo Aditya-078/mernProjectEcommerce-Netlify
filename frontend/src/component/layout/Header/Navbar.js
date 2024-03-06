@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaSearch, FaUser, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import {FaAddressCard, FaSearch, FaUser, FaShoppingCart, FaBars, FaTimes, FaHeart } from "react-icons/fa";
 import logo from "../../../images/INFISPEC LOGO FULL.png";
 import "./Navbar.css";
 
@@ -48,8 +48,14 @@ const Navbar = () => {
           <Link to="/login" className="icon">
             <FaUser />
           </Link>
+          <Link to="/wishlist" className="icon">
+           <FaHeart />
+           </Link>
           <Link to="/cart" className="icon">
             <FaShoppingCart />
+          </Link>
+          <Link to="/address" className="icon"> {/* Add this line for address page */}
+            <FaAddressCard />
           </Link>
         </div>
         <div className="navbar-toggle" onClick={toggleNavbar}>

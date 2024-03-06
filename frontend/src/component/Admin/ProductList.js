@@ -75,6 +75,14 @@ const ProductList = ({ history }) => {
       minWidth: 270,
       flex: 0.5,
     },
+    
+    { field: "costPrice", 
+    headerName: "Cost Price", 
+    type: "number", 
+    minWidth: 270, 
+    flex: 0.5 
+    },
+    
 
     {
       field: "actions",
@@ -111,6 +119,7 @@ const ProductList = ({ history }) => {
         id: item._id,
         stock: item.Stock,
         price: item.price,
+        costPrice: item.costPrice,
         name: item.name,
       });
     });

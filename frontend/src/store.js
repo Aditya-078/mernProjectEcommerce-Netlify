@@ -17,7 +17,10 @@ import {
   profileReducer,
   userDetailsReducer,
   userReducer,
+  addressReducer
 } from "./reducers/userReducer";
+
+import { wishlistReducer } from "./reducers/wishlistReducer";
 
 import { cartReducer } from "./reducers/cartReducer";
 import {
@@ -47,6 +50,8 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   productReviews: productReviewsReducer,
   review: reviewReducer,
+  addresses: addressReducer, 
+  wishlist: wishlistReducer,
 });
 
 let initialState = {
@@ -58,6 +63,7 @@ let initialState = {
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},
   },
+  wishlist: { wishlistItems: [] }
 };
 
 const middleware = [thunk];

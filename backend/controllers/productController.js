@@ -264,3 +264,14 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
     success: true,
   });
 });
+// Get All Products by Category
+exports.getProductsByCategory = catchAsyncErrors(async (req, res, next) => {
+  const category = req.params.category;
+
+  const products = await Product.find({ category: category });
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});

@@ -42,6 +42,10 @@ import ProductReviews from "./component/Admin/ProductReviews";
 import Contact from "./component/layout/Contact/Contact";
 import About from "./component/layout/About/About";
 import NotFound from "./component/layout/Not Found/NotFound";
+import AddCouponForm from "./component/Admin/AddCouponForm.js";
+import Wishlist from "./component/Wishlist/Wishlist.js"
+import Address from "./component/User/Address.js";
+import CategoryPage from "./component/Home/CategoryPage.js";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -104,13 +108,20 @@ function App() {
           component={UpdatePassword}
         />
 
+
         <Route exact path="/password/forgot" component={ForgotPassword} />
 
         <Route exact path="/password/reset/:token" component={ResetPassword} />
 
         <Route exact path="/login" component={LoginSignUp} />
 
-        <Route exact path="/cart" component={Cart} />
+        <ProtectedRoute exact path="/cart" component={Cart} />
+
+        <Route exact path="/wishlist" component={Wishlist} />
+
+        <ProtectedRoute exact path="/address" component={Address} />
+
+
 
         <ProtectedRoute exact path="/shipping" component={Shipping} />
 
@@ -180,6 +191,18 @@ function App() {
           isAdmin={true}
           component={ProductReviews}
         />
+        <ProtectedRoute
+        exact
+          path="/admin/coupons" 
+           isAdmin={true} 
+             component={AddCouponForm}
+          />
+          
+      
+        
+        <Route exact path="/api/v1/product/category/:category" component={CategoryPage} />
+      
+ 
 
         <Route
           component={

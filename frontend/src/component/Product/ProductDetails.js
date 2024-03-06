@@ -138,7 +138,7 @@ const ProductDetails = ({ match }) => {
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
                     <button onClick={decreaseQuantity}>-</button>
-                    <input readOnly type="number" value={quantity} />
+                    <input className="quant" readOnly type="number" value={quantity} />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
                   <button

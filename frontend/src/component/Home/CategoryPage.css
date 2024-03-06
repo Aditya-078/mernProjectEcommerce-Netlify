@@ -1,0 +1,46 @@
+/* CategoryPage.css */
+
+.container {
+    max-width: 1200px;
+    margin-top:120px;
+    padding: 20px;
+  }
+  
+  .category-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .product-list {
+    margin-top: 20px;
+  }
+  
+  .product-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .product-list li {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .product-list h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .product-list p {
+    margin: 0;
+  }
+  
+  .no-products-message {
+    font-style: italic;
+  }
+  

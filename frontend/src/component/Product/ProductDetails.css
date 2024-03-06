@@ -18,6 +18,9 @@
   border: 1px solid white;
 }
 
+.quant{
+  width:100px
+}
 .ProductDetails > div:last-child {
   align-items: flex-start;
 }
@@ -78,12 +81,12 @@
 }
 
 .detailsBlock-3-1-1 > input {
+  z-index: 99999;
   border: none;
   padding: 0.5vmax;
-  width: 1vmax;
+  width: 50px;
   text-align: center;
   outline: none;
-  font: 400 0.8vmax "Roboto";
   color: rgba(0, 0, 0, 0.74);
 }
 
@@ -202,6 +205,9 @@
     flex-direction: column;
     height: unset;
   }
+  .quant{
+    width: 300px;
+  }
 
   .ProductDetails > div:last-child {
     align-items: center;
@@ -237,13 +243,13 @@
     padding: 2vmax 0;
   }
   .detailsBlock-3-1-1 > button {
-    padding: 1.2vmax;
-    width: 4vmax;
+    padding: 1vmax;
+    width: 3vmax;
   }
 
   .detailsBlock-3-1-1 > input {
     padding: 1.5vmax;
-    width: 3vmax;
+    width: 4vmax;
     font: 400 1.8vmax "Roboto";
   }
 
