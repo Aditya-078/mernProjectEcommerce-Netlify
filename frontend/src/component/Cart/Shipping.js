@@ -45,21 +45,7 @@ const Shipping = ({ history }) => {
     setNewAddress({ ...newAddress, [e.target.name]: e.target.value });
   };
 
-  const addNewAddress = () => {
-    if (!newAddress.address || !newAddress.city || !newAddress.state || !newAddress.country || !newAddress.pinCode || !newAddress.phoneNo) {
-      alert.error("Please fill in all address fields");
-      return;
-    }
-    setAddresses([...addresses, newAddress]);
-    setNewAddress({
-      address: "",
-      city: "",
-      state: "",
-      country: "",
-      pinCode: "",
-      phoneNo: "",
-    });
-  };
+  
 
   const shippingSubmit = (e) => {
     e.preventDefault();
